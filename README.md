@@ -2,7 +2,7 @@
 
 [![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/kali-desktop?referralCode=20H68q)
 
-A Kali Linux 2026.3 (kali-rolling) desktop with KDE Plasma that you open in a browser tab. It ships Kali's default tool set (`kali-linux-default`) and the top 10 tools (`kali-tools-top10`), plus Autopsy, Hydra and the other extras of the linuxserver.io image. A generated password protects it, and your home directory (files, settings, browser profile) lives on a persistent volume.
+A Kali Linux 2026.3 (kali-rolling) desktop with KDE Plasma that you open in a browser tab. It comes with Firefox, Dolphin and Konsole, Kali's default tool set (`kali-linux-default`) and the top 10 tools (`kali-tools-top10`), plus Autopsy, Hydra and the other extras of the linuxserver.io image. A generated password protects it, and your home directory (files, settings, browser profile) lives on a persistent volume.
 
 ## About Hosting Kali Linux 2026.3 KDE Desktop
 
@@ -34,7 +34,7 @@ A browser desktop needs a display server, a desktop session, a streaming server,
 |---|---|---|---|
 | Desktop | Wayland (KWin) desktop session, D-Bus, audio, Selkies (loopback only), nginx (login, `/healthz`), all supervised by s6 | `/config` | 3000 (public HTTPS domain) |
 
-**Plan:** **Hobby or Pro only.** The image is 4.5 GB compressed, above the Trial and Free image size limit, so the build fails there. Give it 2 GB of RAM or more.
+**Plan:** **Hobby or Pro only.** The image is 4.5 GB compressed, above the Trial and Free image size limit. Measured on Railway: about 0.8 GB of RAM idle with one browser session, peaking at 1.5 GB while the session starts. Give it 2 GB or more, and more for tools such as Burp Suite or Metasploit.
 
 **First login**
 
