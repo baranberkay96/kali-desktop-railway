@@ -1,6 +1,6 @@
 # Deploy and Host Kali Linux 2026.3 KDE Desktop with Railway
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/kali-desktop?referralCode=20H68q)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/kali-linux-20263-kde-desktop-in-your-bro?referralCode=20H68q)
 
 A Kali Linux 2026.3 (kali-rolling) desktop with KDE Plasma that you open in a browser tab. It comes with Firefox, Dolphin and Konsole, Kali's default tool set (`kali-linux-default`) and the top 10 tools (`kali-tools-top10`), plus Autopsy, Hydra and the other extras of the linuxserver.io image. A generated password protects it, and your home directory (files, settings, browser profile) lives on a persistent volume.
 
