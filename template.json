@@ -1,0 +1,84 @@
+{
+  "name": "Kali Linux 2026.3 KDE Desktop in Your Browser",
+  "description": "Kali Linux 2026.3 KDE desktop with the default tool set, in a browser tab.",
+  "category": "Other",
+  "tags": [
+    "kali",
+    "kali-linux",
+    "security",
+    "pentest",
+    "kde",
+    "linux-desktop",
+    "webtop",
+    "selkies"
+  ],
+  "image": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/kali-linux.svg",
+  "upstream": {
+    "repo": "linuxserver/docker-kali-linux",
+    "version": "acb09ade-ls137",
+    "image": "lscr.io/linuxserver/kali-linux:acb09ade-ls137@sha256:2024b0db04b8115b4c1fb42059ebcc5341d067749081d6668eee7bfe634a1902",
+    "base": "baseimage-selkies (Kali)",
+    "checked": "2026-11-08"
+  },
+  "services": {
+    "Desktop": {
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/kali-linux.svg",
+      "source": {
+        "repo": "baranberkay96/kali-desktop-railway",
+        "rootDirectory": "/services/desktop"
+      },
+      "startCommand": null,
+      "preDeployCommand": null,
+      "healthcheckPath": "/healthz",
+      "healthcheckTimeout": 600,
+      "restartPolicyType": "ON_FAILURE",
+      "restartPolicyMaxRetries": 10,
+      "numReplicas": 1,
+      "cronSchedule": null,
+      "publicDomain": true,
+      "targetPort": 3000,
+      "tcpProxy": null,
+      "volume": {
+        "mountPath": "/config"
+      },
+      "variables": {
+        "PASSWORD": {
+          "defaultValue": "${{secret(32)}}",
+          "description": "Browser login password, generated at deploy (copy it from this variable). Min 8 chars, 12+ recommended. The desktop does not start without it.",
+          "required": false
+        },
+        "CUSTOM_USER": {
+          "defaultValue": "kali",
+          "description": "Browser login name (letters, digits, . _ @ -). The Linux account inside the desktop is 'abc', with passwordless sudo.",
+          "required": false
+        },
+        "PORT": {
+          "defaultValue": "3000",
+          "description": "Port of the desktop's web server (nginx). The public domain and the healthcheck use it. 3001 and 8082 are used internally.",
+          "required": false
+        },
+        "TZ": {
+          "defaultValue": "Etc/UTC",
+          "description": "Time zone of the desktop clock and apps, e.g. Europe/Istanbul.",
+          "required": false
+        },
+        "TITLE": {
+          "defaultValue": "Kali Linux 2026.3 KDE Desktop",
+          "description": "Browser tab title of the desktop page.",
+          "required": false
+        },
+        "APT_PACKAGES": {
+          "defaultValue": "",
+          "description": "Optional. Distribution packages (space-separated) reinstalled in the background after every redeploy, e.g. 'seclists gobuster'.",
+          "required": false
+        },
+        "RAILWAY_DEPLOYMENT_DRAINING_SECONDS": {
+          "defaultValue": "15",
+          "description": "Seconds between stop signal and kill on redeploy, so desktop apps and services shut down cleanly.",
+          "required": false
+        }
+      }
+    }
+  },
+  "buckets": []
+}
