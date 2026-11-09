@@ -2,11 +2,11 @@
 
 [![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/kali-linux-20263-kde-desktop-in-your-bro?referralCode=20H68q)
 
-A Kali Linux 2026.3 (kali-rolling) desktop with KDE Plasma that you open in a browser tab. It comes with Firefox, Dolphin and Konsole, Kali's default tool set (`kali-linux-default`) and the top 10 tools (`kali-tools-top10`), plus Autopsy, Hydra and the other extras of the linuxserver.io image. A generated password protects it, and your home directory (files, settings, browser profile) lives on a persistent volume.
+A Kali Linux 2026.3 (kali-rolling) desktop with KDE Plasma that you open in a browser tab. It comes with Firefox, Dolphin and Konsole, Kali's top 10 tools (`kali-tools-top10`: Metasploit, Burp Suite, nmap, sqlmap, Hydra, John the Ripper, Wireshark, Aircrack-ng, NetExec, Responder) and gobuster, ffuf, dirb, whatweb, searchsploit and the Kali wordlists. More Kali packages are one variable away. A generated password protects it, and your home directory (files, settings, browser profile) lives on a persistent volume.
 
 ## About Hosting Kali Linux 2026.3 KDE Desktop
 
-A browser desktop needs a display server, a desktop session, a streaming server, a login in front of it, and storage that outlives rebuilds. This community template uses the linuxserver.io image `kali-linux` (pinned release `acb09ade-ls137`), which streams the desktop with Selkies over a single HTTPS WebSocket. Railway runs its own init as PID 1, which the image's s6-overlay init refuses to run under, so a small start script brings up the image's own services under s6 supervision instead. nginx requires a login on every page except `/healthz`. `/config` (the home directory) is a Railway volume.
+A browser desktop needs a display server, a desktop session, a streaming server, a login in front of it, and storage that outlives rebuilds. This community template builds Kali's KDE desktop the way linuxserver.io builds its `kali-linux` image, on the same base (`baseimage-selkies`, pinned by digest), and streams it with Selkies over a single HTTPS WebSocket. The tool set is smaller than linuxserver.io's so the image fits Railway's Trial and Free plans. Railway runs its own init as PID 1, which the image's s6-overlay init refuses to run under, so a small start script brings up the image's own services under s6 supervision instead. nginx requires a login on every page except `/healthz`. `/config` (the home directory) is a Railway volume.
 
 ## Common Use Cases
 
@@ -17,7 +17,7 @@ A browser desktop needs a display server, a desktop session, a streaming server,
 
 ## Dependencies for Kali Linux 2026.3 KDE Desktop Hosting
 
-- One service built from a small Dockerfile on top of `lscr.io/linuxserver/kali-linux` (no database, no external API keys)
+- One service built from a Dockerfile on top of `ghcr.io/linuxserver/baseimage-selkies` (kali), with Kali packages from the official archive (no database, no external API keys)
 - A Railway volume mounted at `/config` for the home directory
 
 ### Deployment Dependencies
@@ -34,11 +34,11 @@ A browser desktop needs a display server, a desktop session, a streaming server,
 |---|---|---|---|
 | Desktop | Wayland (KWin) desktop session, D-Bus, audio, Selkies (loopback only), nginx (login, `/healthz`), all supervised by s6 | `/config` | 3000 (public HTTPS domain) |
 
-**Plan:** **Hobby or Pro only.** The image is 4.5 GB compressed, above the Trial and Free image size limit. Measured on Railway: about 0.8 GB of RAM idle with one browser session, peaking at 1.5 GB while the session starts. Give it 2 GB or more, and more for tools such as Burp Suite or Metasploit.
+**Plan:** runs on Trial and up. The image stays under the 4 GB image size limit of Trial and Free. Measured on Railway with a 1 GB memory limit (Trial): about 0.75 GB of RAM with one browser session connected and no apps open. Free's 0.5 GB is too small for KDE. Burp Suite, Metasploit and Firefox with several tabs need Hobby and 2 GB or more.
 
 **First login**
 
-1. Wait for the deploy to turn healthy (the first build pulls a 4.5 GB image, so allow a few minutes).
+1. Wait for the deploy to turn healthy. The first build downloads about 1.7 GB of Kali packages, so allow about 10 minutes.
 2. Open the public URL. The browser asks for a login.
 3. User `kali` (or your `CUSTOM_USER`; letters, digits and `. _ @ -` only, otherwise it stays `kali`), password = `PASSWORD` from the service Variables tab.
 4. The desktop appears and resizes to your browser window. The Selkies side menu has the clipboard box, file upload and download, audio, keyboard and display settings.
@@ -70,7 +70,7 @@ Railway has no GPUs. The desktop is drawn on the CPU (Mesa's software renderer),
 
 **Scaling and versions**
 
-The desktop is a single-user, volume-backed service: run one replica and scale it vertically. To upgrade, change the `FROM` line in `services/desktop/Dockerfile` to a newer release tag with its digest and redeploy. The home directory is kept.
+The desktop is a single-user, volume-backed service: run one replica and scale it vertically. Every build installs the current kali-rolling packages. To move to a newer base, change the digest on the `FROM` line in `services/desktop/Dockerfile` (the `kali` tag of `ghcr.io/linuxserver/baseimage-selkies`) and redeploy. The home directory is kept.
 
 **Limits**
 

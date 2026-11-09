@@ -1,6 +1,7 @@
 {
   "name": "Kali Linux 2026.3 KDE Desktop in Your Browser",
-  "description": "Kali Linux 2026.3 KDE desktop with the default tool set, in a browser tab.",
+  "idSeed": "Kali Linux 2026.3 KDE Desktop in Your Browser / 2026-11-09",
+  "description": "Kali Linux 2026.3 KDE desktop with Kali's top 10 tools, in a browser tab.",
   "category": "Other",
   "tags": [
     "kali",
@@ -69,7 +70,7 @@
         },
         "APT_PACKAGES": {
           "defaultValue": "",
-          "description": "Optional. Distribution packages (space-separated) reinstalled in the background after every redeploy, e.g. 'seclists gobuster'.",
+          "description": "Optional. Kali packages (space-separated) reinstalled in the background after every redeploy, e.g. 'seclists nikto'.",
           "required": false
         },
         "RAILWAY_DEPLOYMENT_DRAINING_SECONDS": {
