@@ -1,7 +1,7 @@
 {
-  "name": "Kali Linux 2026.3 KDE Desktop in Your Browser",
+  "name": "Kali Linux KDE Desktop in Your Browser",
   "idSeed": "Kali Linux 2026.3 KDE Desktop in Your Browser / 2026-11-09",
-  "description": "Kali Linux 2026.3 KDE desktop with Kali's top 10 tools, in a browser tab.",
+  "description": "Kali Linux KDE desktop with Kali's top 10 tools, in a browser tab.",
   "category": "Other",
   "tags": [
     "kali",
@@ -64,7 +64,7 @@
           "required": false
         },
         "TITLE": {
-          "defaultValue": "Kali Linux 2026.3 KDE Desktop",
+          "defaultValue": "Kali Linux KDE Desktop",
           "description": "Browser tab title of the desktop page.",
           "required": false
         },

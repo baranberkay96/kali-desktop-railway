@@ -1,10 +1,10 @@
-# Deploy and Host Kali Linux 2026.3 KDE Desktop with Railway
+# Deploy and Host Kali Linux KDE Desktop with Railway
 
 [![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/kali-linux-20263-kde-desktop-in-your-bro?referralCode=20H68q)
 
-A Kali Linux 2026.3 (kali-rolling) desktop with KDE Plasma that you open in a browser tab. It comes with Firefox, Dolphin and Konsole, Kali's top 10 tools (`kali-tools-top10`: Metasploit, Burp Suite, nmap, sqlmap, Hydra, John the Ripper, Wireshark, Aircrack-ng, NetExec, Responder) and gobuster, ffuf, dirb, whatweb, searchsploit and the Kali wordlists. More Kali packages are one variable away. A generated password protects it, and your home directory (files, settings, browser profile) lives on a persistent volume.
+A Kali Linux (kali-rolling) desktop with KDE Plasma that you open in a browser tab. It comes with Firefox, Dolphin and Konsole, Kali's top 10 tools (`kali-tools-top10`: Metasploit, Burp Suite, nmap, sqlmap, Hydra, John the Ripper, Wireshark, Aircrack-ng, NetExec, Responder) and gobuster, ffuf, dirb, whatweb, searchsploit and the Kali wordlists. More Kali packages are one variable away. A generated password protects it, and your home directory (files, settings, browser profile) lives on a persistent volume.
 
-## About Hosting Kali Linux 2026.3 KDE Desktop
+## About Hosting Kali Linux KDE Desktop
 
 A browser desktop needs a display server, a desktop session, a streaming server, a login in front of it, and storage that outlives rebuilds. This community template builds Kali's KDE desktop the way linuxserver.io builds its `kali-linux` image, on the same base (`baseimage-selkies`, pinned by digest), and streams it with Selkies over a single HTTPS WebSocket. The tool set is smaller than linuxserver.io's so the image fits Railway's Trial and Free plans. Railway runs its own init as PID 1, which the image's s6-overlay init refuses to run under, so a small start script brings up the image's own services under s6 supervision instead. nginx requires a login on every page except `/healthz`. `/config` (the home directory) is a Railway volume.
 
@@ -15,7 +15,7 @@ A browser desktop needs a display server, a desktop session, a streaming server,
 - Open untrusted links or files in a cloud browser instead of on your own computer
 - A ready Linux environment for training sessions, demos and support work
 
-## Dependencies for Kali Linux 2026.3 KDE Desktop Hosting
+## Dependencies for Kali Linux KDE Desktop Hosting
 
 - One service built from a Dockerfile on top of `ghcr.io/linuxserver/baseimage-selkies` (kali), with Kali packages from the official archive (no database, no external API keys)
 - A Railway volume mounted at `/config` for the home directory
@@ -76,6 +76,6 @@ The desktop is a single-user, volume-backed service: run one replica and scale i
 
 No Docker inside the desktop (Railway runs no privileged containers), no WebRTC/UDP (the WebSocket stream is used instead), and running apps restart on every redeploy. Railway's app sleeping stops the desktop session as well. Use the desktop for your own work: the Fair Use Policy forbids cryptocurrency mining, torrenting, reselling compute, operating proxies or anonymization services, and abusive bots or scrapers.
 
-### Why Deploy Kali Linux 2026.3 KDE Desktop on Railway?
+### Why Deploy Kali Linux KDE Desktop on Railway?
 
 Railway gives the desktop HTTPS, a persistent volume and usage-based billing without any server to manage. You get a Linux desktop at a URL in a few minutes, pay for the RAM and CPU it actually uses, and can resize or redeploy it from the dashboard. This is a community template, not affiliated with linuxserver.io, the Selkies project, the distribution's publishers or Railway.

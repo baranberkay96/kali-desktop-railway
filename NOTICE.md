@@ -1,4 +1,4 @@
-# NOTICE: Kali Linux 2026.3 KDE Desktop in Your Browser template
+# NOTICE: Kali Linux KDE Desktop in Your Browser template
 
 ## Base image and its components
 
@@ -14,7 +14,7 @@ The service is built `FROM ghcr.io/linuxserver/baseimage-selkies:kali@sha256:bcc
 | Selkies | https://github.com/selkies-project/selkies | MPL-2.0 | Streaming server and web client, in the base image |
 | s6-overlay 3.2.1.0 | https://github.com/just-containers/s6-overlay, https://skarnet.org/software/ | ISC | Process supervision. `railway-start` calls `s6-svscan`, `s6-rc-compile`, `s6-rc-init` and `s6-rc` from the image |
 | catatonit | https://github.com/openSUSE/catatonit (distribution package in the base image) | GPL-2.0-or-later | Container init and subreaper (`ENTRYPOINT`) |
-| Kali Linux 2026.3 (kali-rolling) packages: KDE Plasma (`kali-desktop-kde` and the KDE apps upstream installs), `kali-linux-core`, `kali-tools-top10`, Firefox ESR, dirb, ffuf, gobuster, whatweb, exploitdb, wordlists and others | https://www.kali.org/ and https://pkg.kali.org/ | Each package's own license (`/usr/share/doc/*/copyright` in the image) | Installed with apt at build time, unmodified |
+| Kali Linux (kali-rolling) packages: KDE Plasma (`kali-desktop-kde` and the KDE apps upstream installs), `kali-linux-core`, `kali-tools-top10`, Firefox ESR, dirb, ffuf, gobuster, whatweb, exploitdb, wordlists and others | https://www.kali.org/ and https://pkg.kali.org/ | Each package's own license (`/usr/share/doc/*/copyright` in the image) | Installed with apt at build time, unmodified |
 
 ### GPL notes
 

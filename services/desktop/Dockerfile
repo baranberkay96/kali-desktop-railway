@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 #
-# Kali Linux 2026.3 (kali-rolling) with KDE Plasma (Wayland), in the browser, for Railway.
+# Kali Linux (kali-rolling) with KDE Plasma (Wayland), in the browser, for Railway.
 #
 # Built the way linuxserver.io builds its kali-linux image (Dockerfile and
 # root/ of linuxserver/docker-kali-linux, git revision 11d330ff), on the same
@@ -36,7 +36,7 @@ ENV PUID=1000 \
     SELKIES_ALLOWED_ORIGINS="" \
     SELKIES_ENABLE_BASIC_AUTH=false \
     PIXELFLUX_WAYLAND=true \
-    TITLE="Kali Linux 2026.3 KDE Desktop" \
+    TITLE="Kali Linux KDE Desktop" \
     CUSTOM_USER=kali \
     PORT=3000
 
